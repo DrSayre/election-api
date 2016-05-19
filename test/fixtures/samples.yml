@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source: one
+  candidate: one
+  probability: 9.99
+  time_added: 2016-05-16 21:39:00
+
+two:
+  source: two
+  candidate: two
+  probability: 9.99
+  time_added: 2016-05-16 21:39:00
