@@ -61,7 +61,8 @@ source_row.each_with_index do |source, row_index|
       rows.each_with_index do |row, index|
         tds = row.css("td")
         if !tds[row_index].text.blank? && !tds[row_index]['data-o'].blank?
-          chance_hash[tds[0].css('a')[0]['data-name']] = (convert_payout_to_probability(tds[row_index]['data-o']) * 100).round(1)
+          probability = convert_payout_to_probability(tds[row_index]['data-o'])
+          chance_hash[tds[0].css('a')[0]['data-name']] = (probability * 100).round(1) if probability > 0.01
         end
       end
       adjust_probability(chance_hash, oddsmaker) unless chance_hash.empty?
