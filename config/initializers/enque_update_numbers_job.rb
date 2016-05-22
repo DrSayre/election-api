@@ -1,0 +1,2 @@
+UpdateNumbersJob.perform_later
+UpdateMeanSampleJob.perform_later
