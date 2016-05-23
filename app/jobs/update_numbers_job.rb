@@ -41,7 +41,7 @@ class UpdateNumbersJob < ApplicationJob
     end
 
     chance_hash.each do |key, value|
-      Sample.create(time_added: Time.now, source: Source.find_by(name: source), probability: (value/total_score).round(3), candidate: Candidate.find_or_create_by(name: key))
+      Sample.create(time_added: Time.now, source: Source.find_or_create_by(name: source), probability: (value/total_score).round(3), candidate: Candidate.find_or_create_by(name: key))
     end
   end
 
