@@ -1,2 +1,3 @@
 UpdateNumbersJob.perform_later
 UpdateMeanSampleJob.perform_later
+TweetStatusJob.set(wait: 5.minutes).perform_later
