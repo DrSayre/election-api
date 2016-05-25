@@ -13,6 +13,17 @@ class Candidate < ApplicationRecord
     save
   end
 
+  def magic_8_ball
+    if probability >= 0.60
+      return Magic8Ball.positive_answer
+    elsif probability < 0.40
+      return Magic8Ball.negative_answer
+    else
+      return Magic8Ball.neutral_answer
+    end
+    Magic8Ball.neutral_answer
+  end
+
   def average_samples(samples)
     return 0 if samples.empty?
     samples.inject{ |sum, el| sum + el }.to_f / samples.size

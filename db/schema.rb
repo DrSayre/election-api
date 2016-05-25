@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518004108) do
+ActiveRecord::Schema.define(version: 20160525010747) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 20160518004108) do
 
   create_table "sources", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string   "identity"
+    t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
