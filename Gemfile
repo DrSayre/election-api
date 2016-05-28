@@ -11,6 +11,7 @@ gem 'mechanize'
 gem 'nokogiri'
 gem 'twitter'
 gem 'magic_8_ball'
+gem 'rack-cors', require: 'rack/cors'
 # gem 'crono'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
