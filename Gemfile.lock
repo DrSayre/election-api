@@ -1,4 +1,22 @@
 GIT
+  remote: git://github.com/seuros/capistrano-sidekiq.git
+  revision: 0794cf99be7bfe7f3e6828c4965db135d7e1c20b
+  specs:
+    capistrano-sidekiq (0.5.4)
+      capistrano
+      sidekiq (>= 3.4)
+
+GIT
+  remote: git://github.com/sinatra/sinatra.git
+  revision: 5e9e23621c1f6abbd793b46452cb11ae8ca1277e
+  specs:
+    sinatra (2.0.0.pre.alpha)
+      mustermann (~> 0.4)
+      rack (= 2.0.0.rc1)
+      rack-protection (~> 1.5)
+      tilt (~> 2.0)
+
+GIT
   remote: https://github.com/cerebris/jsonapi-resources.git
   revision: 5e4fd81e516fe73395d8607520e96d6a013ff741
   branch: master
@@ -74,6 +92,7 @@ GEM
       capistrano (~> 3.0)
       puma (>= 2.6)
     concurrent-ruby (1.0.2)
+    connection_pool (2.2.0)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.10)
@@ -118,6 +137,8 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.9.0)
     multipart-post (2.0.0)
+    mustermann (0.4.0)
+      tool (~> 0.2)
     naught (1.1.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -132,6 +153,8 @@ GEM
     rack (2.0.0.rc1)
       json
     rack-cors (0.4.0)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0.rc1)
@@ -164,6 +187,11 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redis (3.3.0)
+    sidekiq (4.1.2)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      redis (~> 3.2, >= 3.2.1)
     simple_oauth (0.3.1)
     spring (1.7.1)
     spring-watcher-listen (2.0.0)
@@ -182,6 +210,8 @@ GEM
       net-ssh (>= 2.8.0)
     thor (0.19.1)
     thread_safe (0.3.5)
+    tilt (2.0.4)
+    tool (0.2.3)
     twitter (5.16.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -212,6 +242,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
+  capistrano-sidekiq!
   capistrano3-puma
   jsonapi-resources!
   listen (~> 3.0.5)
@@ -221,6 +252,8 @@ DEPENDENCIES
   puma (~> 3.0)
   rack-cors
   rails (>= 5.0.0.rc1, < 5.1)
+  sidekiq
+  sinatra!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
