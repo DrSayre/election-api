@@ -5,6 +5,6 @@ class UpdateMeanSampleJob < ApplicationJob
     Candidate.all.each do |candidate|
       candidate.mean_samples.create(probability: candidate.probability, sample_date: Date.today)
     end
-    UpdateMeanSampleJob.set(wait: 1.day).perform_later
+    UpdateMeanSampleJob.set(wait: 1.day).perform_now
   end
 end
