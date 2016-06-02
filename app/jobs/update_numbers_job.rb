@@ -41,8 +41,7 @@ class UpdateNumbersJob < ApplicationJob
     end
     total_score = 100 if total_score < 100
     chance_hash.each do |key, value|
-      probability = value
-      probability = probability / total_score
+      probability = value / total_score
       Sample.create(time_added: Time.now, source: Source.find_or_create_by(name: source), probability: probability.round(3), candidate: Candidate.find_or_create_by(name: key))
     end
   end
