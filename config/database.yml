@@ -27,5 +27,5 @@ production:
   adapter: postgresql
   encoding: unicode
   database: election_api_production
-  pool: 25
+  pool: 5
   port: 5432
