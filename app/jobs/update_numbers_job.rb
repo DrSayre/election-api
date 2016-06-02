@@ -31,7 +31,7 @@ class UpdateNumbersJob < ApplicationJob
         end
       end
     end
-    UpdateNumbersJob.set(wait: 10.minutes).perform_now
+    UpdateNumbersJob.set(wait: 10.minutes).perform_later
   end
 
   def adjust_probability(chance_hash, source)
@@ -39,9 +39,13 @@ class UpdateNumbersJob < ApplicationJob
     chance_hash.each do |key, value|
       total_score = total_score + value
     end
-
+    
     chance_hash.each do |key, value|
-      Sample.create(time_added: Time.now, source: Source.find_or_create_by(name: source), probability: (value/total_score).round(3), candidate: Candidate.find_or_create_by(name: key))
+      probability = value
+      if total_score > 1
+        probability = probability / total_score
+      end
+      Sample.create(time_added: Time.now, source: Source.find_or_create_by(name: source), probability: probability.round(3), candidate: Candidate.find_or_create_by(name: key))
     end
   end
 
