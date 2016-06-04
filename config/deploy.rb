@@ -4,7 +4,7 @@ server '192.241.190.158', port: 22, roles: [:web, :app, :db], primary: true
 set :repo_url,        'https://github.com/DrSayre/election-api.git'
 set :application,     'election-api'
 set :user,            'deploy'
-set :puma_threads,    [4, 16]
+set :puma_threads,    [1, 6]
 set :puma_workers,    1
 
 # Don't change these unless you know what you're doing
