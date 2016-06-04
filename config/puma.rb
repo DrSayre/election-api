@@ -55,21 +55,11 @@ environment 'production'
 pidfile "/home/deploy/apps/election-api/shared/tmp/pids/puma.pid"
 state_path "/home/deploy/apps/election-api/shared/tmp/pids/puma.state"
 stdout_redirect '/home/deploy/apps/election-api/current/log/puma.error.log', '/home/deploy/apps/election-api/current/log/puma.access.log', true
-
-
 threads 4,16
-
-
-
 bind 'unix:///home/deploy/apps/election-api/shared/tmp/sockets/election-api-puma.sock'
 
 workers 0
-
-
-
 preload_app!
-
-
 on_restart do
   puts 'Refreshing Gemfile'
   ENV["BUNDLE_GEMFILE"] = "/home/deploy/apps/election-api/current/Gemfile"
