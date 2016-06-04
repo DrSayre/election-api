@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/seuros/capistrano-puma.git
+  revision: 963e8f946681d7c4c7bcbeb948abebdb5a15e978
+  branch: master
+  specs:
+    capistrano3-puma (2.0.0)
+      capistrano (~> 3.5)
+      capistrano-bundler
+      puma (~> 3.4)
+
+GIT
   remote: https://github.com/cerebris/jsonapi-resources.git
   revision: c358cb7515441ee7a958b37bcc3be44acc05d0ef
   branch: master
@@ -70,9 +80,6 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (1.2.1)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
     concurrent-ruby (1.0.2)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
@@ -213,7 +220,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
-  capistrano3-puma
+  capistrano3-puma!
   jsonapi-resources!
   listen (~> 3.0.5)
   magic_8_ball
