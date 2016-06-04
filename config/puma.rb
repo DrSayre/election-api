@@ -4,16 +4,16 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-threads threads_count, threads_count
+# threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
+# threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+# port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+# environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -44,4 +44,44 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # end
 
 # Allow puma to be restarted by `rails restart` command.
-plugin :tmp_restart
+# plugin :tmp_restart
+
+#!/usr/bin/env puma
+
+directory '/home/deploy/apps/election-api/current'
+rackup "/home/deploy/apps/election-api/current/config.ru"
+environment 'production'
+
+pidfile "/home/deploy/apps/election-api/shared/tmp/pids/puma.pid"
+state_path "/home/deploy/apps/election-api/shared/tmp/pids/puma.state"
+stdout_redirect '/home/deploy/apps/election-api/current/log/puma.error.log', '/home/deploy/apps/election-api/current/log/puma.access.log', true
+
+
+threads 4,16
+
+
+
+bind 'unix:///home/deploy/apps/election-api/shared/tmp/sockets/election-api-puma.sock'
+
+workers 0
+
+
+
+preload_app!
+
+
+on_restart do
+  puts 'Refreshing Gemfile'
+  ENV["BUNDLE_GEMFILE"] = "/home/deploy/apps/election-api/current/Gemfile"
+end
+
+
+before_fork do
+  ActiveRecord::Base.connection_pool.disconnect!
+end
+
+on_worker_boot do
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
