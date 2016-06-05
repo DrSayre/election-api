@@ -31,7 +31,7 @@ class UpdateNumbersJob < ApplicationJob
         end
       end
     end
-    UpdateNumbersJob.set(wait: 10.minutes).perform_later
+    UpdateNumbersJob.set(wait: 1.hour).perform_later
   end
 
   def adjust_probability(chance_hash, source)
