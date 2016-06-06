@@ -10,6 +10,5 @@ class TweetStatusJob < ApplicationJob
       config.access_token_secret = 'Vl01D6ad9xHh9urdYIvKeCOSy1hkiX9QBPWH6NwWl8rwO'
     end
     client.update("Donald Trump currently has a #{(donald.probability * 100).round(1)}\% chance of winning the election #WillTrumpWin")
-    TweetStatusJob.set(wait: 6.hours).perform_now
   end
 end

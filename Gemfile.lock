@@ -80,7 +80,11 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    clockwork (2.0.0)
+      activesupport
+      tzinfo
     concurrent-ruby (1.0.2)
+    daemons (1.2.3)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.10)
@@ -221,6 +225,8 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capistrano3-puma!
+  clockwork
+  daemons
   jsonapi-resources!
   listen (~> 3.0.5)
   magic_8_ball
